@@ -9,7 +9,7 @@ const path = require("path");
 
 // import user defined files
 const { authMiddleware } = require("./utils/auth");
-const { typeDefs, resolvers } = require("./schemas");
+const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
 
 // express server
