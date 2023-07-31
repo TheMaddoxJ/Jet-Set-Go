@@ -27,4 +27,4 @@ const locationSchema = new Schema({
   },
 });
 
-module.exports = bookSchema;
+module.exports = locationSchema;
