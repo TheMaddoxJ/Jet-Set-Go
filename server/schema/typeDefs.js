@@ -1,30 +1,52 @@
-const { buildSchema } = require('graphql');
+const { gql } = require('apollo-server-express');
 
-module.exports = buildSchema(`
+const typeDefs = gql`
   type User {
     _id: ID!
     username: String!
     email: String!
     password: String!
+    locationCount: Int
+    savedLocation: [Location]
   }
 
-  input UserInput {
-    username: String!
-    email: String!
-    password: String!
+  type Location {
+    locationId: ID!
+    name: String!
+    description: String!
+    image: String
+    link: String
+    title: String!
   }
 
-  type RootQuery {
-    users: [User!]!
-    user(_id: ID!): User!
+  type Auth {
+    token: ID!
+    user: User
   }
 
-  type RootMutation {
-    createUser(userInput: UserInput): User
+  input LocationInput {
+    locationId: ID!
+    name: String!
+    description: String!
+    image: String
+    link: String
+    title: String!
   }
 
+  type Query {
+    me: User  
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveLocation(locationData: LocationInput!): User
+    removeLocation(locationId: ID!): User
+  }
   schema {
-    query: RootQuery
-    mutation: RootMutation
+    query: Query
+    mutation: Mutation
   }
-`);
+`;
+
+module.exports = typeDefs;
