@@ -1,8 +1,8 @@
 const express = require("express");
-const { graphqlHTTP } = require('express-graphql');
-const  mongoose = require("mongoose");
-// const schema = require('./schema');
-// const resolvers = require('./schema/resolvers')
+const { graphqlHTTP } = require("express-graphql");
+const mongoose = require("mongoose");
+const schema = require("./schema");
+const resolvers = require("./schema/resolvers");
 
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
@@ -22,13 +22,14 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-})
-  .then(() => console.log('MongoDB Connected'))
-  .catch((err) => console.losg('MongoDB connection error', err));
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.losg("MongoDB connection error", err));
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
