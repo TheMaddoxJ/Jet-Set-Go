@@ -25,6 +25,14 @@ const locationSchema = new Schema({
     type: String,
     required: true,
   },
-});
+},
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+  );
+
+// const Location = model('Location', locationSchema)
 
 module.exports = locationSchema;
