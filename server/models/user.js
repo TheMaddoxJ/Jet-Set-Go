@@ -23,7 +23,7 @@ const userSchema = new Schema(
       required: true,
     },
     // set savedLocations to be an array of data that adheres to the locationSchema
-    savedLocations: [locationSchema],
+    savedLocation: [locationSchema],
   },
   // set this to use virtual below
   {

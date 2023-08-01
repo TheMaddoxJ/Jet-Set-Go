@@ -49,7 +49,7 @@ module.exports = {
     try {
       const updatedUser = await User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { saveLocation: body } },
+        { $addToSet: { savedLocation: body } },
         { new: true, runValidators: true }
       );
       return res.json(updatedUser);
@@ -62,7 +62,7 @@ module.exports = {
   async deleteLocation({ user, params }, res) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { saveLocation: { bookId: params.bookId } } },
+      { $pull: { savedLocation: { locationId: params.locationId } } },
       { new: true }
     );
     if (!updatedUser) {
