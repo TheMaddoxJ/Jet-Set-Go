@@ -1,9 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
-// import schema from location.js
-const locationSchema = require('./location');
+// const locationSchema = require('./location');
 
 const userSchema = new Schema(
   {
@@ -23,7 +21,12 @@ const userSchema = new Schema(
       required: true,
     },
     // set savedLocations to be an array of data that adheres to the locationSchema
-    savedLocation: [locationSchema],
+    savedLocation: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Location',
+      }
+    ],
   },
   // set this to use virtual below
   {

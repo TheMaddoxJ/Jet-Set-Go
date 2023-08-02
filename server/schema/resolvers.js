@@ -68,5 +68,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
-//im so scared 
