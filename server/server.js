@@ -1,8 +1,5 @@
 const express = require("express");
-const cors = require('cors');
-const { graphqlHTTP } = require('express-graphql');
-const  mongoose = require("mongoose");
-const { typeDefs, resolvers } = require("./schema");
+
 const { ApolloServer } = require("apollo-server-express");
 const path = require("path");
 const bodyParser = require("body-parser");
